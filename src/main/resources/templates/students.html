@@ -82,7 +82,7 @@
                     </button>
             </td>
             <td style="width: 5px">
-                <a th:href="@{/students/{id}(id=${student.id})}"/>
+<!--               <a th:href="@{/students/{id}(id=${student.id})}"/>-->
                 <input type="hidden" name="id" value="<%=student.getId()%>"/>
                 <input type="hidden" name="action" value="delete"/>
                 <button class="btn btn-outline-danger" type="submit" value="delete" data-toggle="modal"
@@ -95,6 +95,29 @@
         </tr>
         </tbody>
     </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure?
+            </div>
+            <div class="modal-footer">
+              <a th:each="student: ${students}" th:href="@{/students/{id}(id=${student.id})}"/>
+                    <input type="hidden" name="id" value="" id="idForDelete"/>
+                    <input type="hidden" name="action" value="delete"/>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-danger" value="Delete"/>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
